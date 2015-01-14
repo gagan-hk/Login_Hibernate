@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1891194518">
+  <component name="DataSourceManagerImpl" format="xml" hash="3064255117">
     <data-source source="LOCAL" name="MySQL - test@localhost" uuid="b8e7f429-6699-426f-a300-072c2af37049">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
@@ -14,6 +14,14 @@
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />
       </driver-properties>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="hibernate.xml" uuid="b92e9795-8f3c-44ff-b81f-760be9b9c2f5">
+      <driver-ref>mysql</driver-ref>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/test</jdbc-url>
+      <user-name>root</user-name>
+      <user-password>dfcddfcbdfcddfcbdfc4</user-password>
       <libraries />
     </data-source>
   </component>

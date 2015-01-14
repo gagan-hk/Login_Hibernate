@@ -1,6 +1,7 @@
-package login_hibernate;
+package login_hibernate.Controllers;
 
 
+import login_hibernate.Model.UsersEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,7 +23,8 @@ public class LoginController {
         bean.setName(user);
         bean.setPwd(pwd);
         boolean status = bean.validate();
-        System.out.print(status);
+
+       // bean.subordinates("admin");
 
         if(status) {
             String s = "Welcome "+user ;
@@ -32,4 +34,6 @@ public class LoginController {
             return new ModelAndView("login-error" , "message" , "Invalid ID or Password");
         }
     }
+
+
 }

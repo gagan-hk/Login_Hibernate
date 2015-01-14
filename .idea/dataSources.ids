@@ -7,6 +7,16 @@
     </database-info>
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
     <schema name="" catalog="test"/>
+    <table name="permission" schema="" catalog="test" type="TABLE">
+      <column name="role" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="permission" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="role,permission"/>
+    </table>
+    <table name="role" schema="" catalog="test" type="TABLE">
+      <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="role" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="name,role"/>
+    </table>
     <table name="users" schema="" catalog="test" type="TABLE">
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <column name="pwd" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
@@ -1508,6 +1518,14 @@
       <exported-key name="fk_customer_store" table="customer" schema="" catalog="sakila" columns="store_id"/>
       <exported-key name="fk_inventory_store" table="inventory" schema="" catalog="sakila" columns="store_id"/>
       <exported-key name="fk_staff_store" table="staff" schema="" catalog="sakila" columns="store_id"/>
+    </table>
+    <table name="permission" schema="" catalog="test" type="TABLE">
+      <column name="role" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="permission" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="role" schema="" catalog="test" type="TABLE">
+      <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="role" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
     </table>
     <table name="users" schema="" catalog="test" type="TABLE">
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>

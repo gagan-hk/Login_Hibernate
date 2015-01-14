@@ -27,7 +27,7 @@ public class LoginController {
        // bean.subordinates("admin");
 
         if(status) {
-            String s = "Welcome "+user ;
+            String s = user ;
             return new ModelAndView("login-success" , "message" ,s);
         }else {
             //System.out.print();

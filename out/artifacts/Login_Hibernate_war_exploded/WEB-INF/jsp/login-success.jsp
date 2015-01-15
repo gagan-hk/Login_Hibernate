@@ -13,11 +13,27 @@
 <body>
 <h1>Welcome ${message}</h1>
 
-<form action="validatePermission.html">
+<form action="/delete-user.html">
     <input type="hidden" name="name" value="${message}">
-    <input type="hidden" name="permission" value="delete">
-    <input type="submit" value = "Delete">
+    <input type="text" name="del_user">
+    <input type="submit" value = "Delete User">
 </form>
+
+<form action="/create-user.html">
+    <input type="hidden" name="name" value="${message}">
+    <input type="text" name="new_user">
+    <input type="password" name = "pwd">
+    <input type="text" name = "manager">
+
+    <input type="submit" value = "Create User">
+</form>
+
+<form action="/subordinates.html">
+    <input type="hidden" name="name" value="${message}">
+    <input type="submit" value = "My Subordinates">
+</form>
+
+
 
 </body>
 </html>

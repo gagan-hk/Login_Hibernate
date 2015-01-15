@@ -1,8 +1,7 @@
 package login_hibernate.Model;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
+import org.hibernate.Query;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 
@@ -43,6 +42,18 @@ public class RoleEntity implements Serializable {
        c.add(Restrictions.eq("name", name));
        List rs = c.list();
        return rs;
+    }
+
+    public void deleteUser(String del_user){
+        Configuration cfg = new Configuration();
+        cfg.configure("hibernate.xml");
+        SessionFactory factory = cfg.buildSessionFactory();
+        Session session = factory.openSession();
+        Transaction t = session.beginTransaction();
+        Query q = session.createQuery(" delete from RoleEntity where name ='" + del_user + "'");
+        q.executeUpdate();
+        //System.out.println("user"+x);
+        t.commit();
     }
 
 }

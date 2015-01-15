@@ -5,7 +5,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.Query;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -107,6 +110,19 @@ public class UsersEntity {
         return 1;
     }
 
+    public int deleteUser(String del_user){
+        Configuration cfg = new Configuration();
+        cfg.configure("hibernate.xml");
+        SessionFactory factory = cfg.buildSessionFactory();
+        Session session = factory.openSession();
+        Transaction t = session.beginTransaction();
+        Query q = session.createQuery(" delete from UsersEntity where name ='" + del_user +"'");
+        int x = q.executeUpdate();
+        //System.out.println("user"+x);
+        t.commit();
+        return x;
+    }
+
     public ArrayList subordinates(String manager_name){
         Configuration cfg = new Configuration();
         cfg.configure("hibernate.xml");
@@ -114,7 +130,14 @@ public class UsersEntity {
         Session session = factory.openSession();
         //String hql = "Select U.name , U.pwd from UsersEntity U";
         //Query q = session.createQuery(hql);
+
+        ProjectionList p1=Projections.projectionList();
+        p1.add(Projections.property("name"));
+        p1.add(Projections.property("manager_name"));
+
         Criteria c = session.createCriteria(UsersEntity.class);
+        c.setProjection(p1);
+
         List rs = c.list();
 
         ArrayList ans = new ArrayList();
@@ -126,11 +149,13 @@ public class UsersEntity {
         while(!st.empty()){
             mgr = (String)st.pop();
             ans.add(mgr);
-            System.out.println(mgr);
+            //System.out.println(mgr);
             Iterator it = rs.iterator();
             while(it.hasNext()){
-                UsersEntity a = (UsersEntity) it.next();
-                if(a.getManager_name()!=null && a.getManager_name().equals(mgr)) st.push(a.getName());
+                Object[] a = (Object[])it.next();
+               // UsersEntity a = (UsersEntity) it.next();
+
+                if(a[1]!=null && a[1].equals(mgr)) st.push(a[0]);
             }
         }
         return ans;

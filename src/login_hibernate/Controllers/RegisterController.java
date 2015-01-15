@@ -1,7 +1,6 @@
 package login_hibernate.Controllers;
 
 import login_hibernate.Model.UsersEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -9,12 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created by Gagandeep.Singh on 1/9/2015.
+ * Created by Gagandeep.Singh on 1/15/2015.
  */
-@Controller
-
 public class RegisterController {
-
     @RequestMapping("/register")
     public ModelAndView register(HttpServletRequest request , HttpServletResponse response){
         String user = request.getParameter("user");

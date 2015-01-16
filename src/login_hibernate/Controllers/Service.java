@@ -5,6 +5,7 @@ import login_hibernate.Model.RoleEntity;
 import login_hibernate.Model.UsersEntity;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by Gagandeep.Singh on 1/15/2015.
@@ -34,6 +35,10 @@ public class Service {
         int status = bean.insert();
         //System.out.print(status);
         return status;
+    }
+
+    public List listAll(){
+        return new UsersEntity().listAll();
     }
 
 

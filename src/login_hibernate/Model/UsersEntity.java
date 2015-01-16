@@ -92,6 +92,16 @@ public class UsersEntity {
         return false;
     }
 
+    public List listAll(){
+        Configuration cfg = new Configuration();
+        cfg.configure("hibernate.xml");
+        SessionFactory factory = cfg.buildSessionFactory();
+        Session session = factory.openSession();
+        Criteria c = session.createCriteria(UsersEntity.class);
+        List rs = c.list();
+        return rs;
+    }
+
     public int insert(){
         Configuration cfg = new Configuration();
         cfg.configure("hibernate.xml");
